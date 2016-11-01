@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='author' content='Tyrone Saulon'>
+	<meta name='description' content='My portfolio'>
+	<meta name='keywords' content='tsaulon, tsaulon.com, tyrone, saulon, caesar, cipher, caesarcipher, rot13, algorithms, article>
+	<!--Google Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<!--Animation.css-->
+	<link rel='stylesheet' href='../css/animationCSS/animate.css'>
+	<!--Twitter Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--My CSS-->
+	<style>
+		#programBackground{
+			position: fixed;
+			background-image: url('caesar.jpg');
+			background-size: cover;
+			opacity: .7;
+		}
+		
+		#program{
+			opacity: 2;
+		}
+		
+		.latoFont{
+			font-family: 'Lato', sans-serif;
+			color: #FFFFFF;
+			font-weight: 700;
+		}
+		
+		#description{
+			background-color: #000000;
+		}
+	</style>
+	<!--Javascript-->
+	<script>
+		
+		function rot13(str) {
+		
+		var string = str.toUpperCase();
+		var decode = '';
+		 
+			for(var i = 0; i < string.length; i++){
+				if(string.charCodeAt(i) + 13 > 90)
+				//make calculations to reset from 65 to find new charCode value
+					decode += String.fromCharCode(13 - (90 - string.charCodeAt(i)) + 64);
+				else if(string.charCodeAt(i) + 13 <= 90 && string.charCodeAt(i) >= 65)    
+				  //if value is between 65 and 90 add 13 to charCode value
+					decode += String.fromCharCode(string.charCodeAt(i) + 13);
+				else if(string.charCodeAt(i) < 65 || string.charCodeAt(i) > 90)
+					//if value is less than 65 or greater than 90 add same value
+					decode += String.fromCharCode(string.charCodeAt(i));
+			}
+			
+			return decode;
+		}
+		
+		function bindCipher(){
+			document.getElementById('output').innerHTML = rot13(document.getElementById('input').value);
+		}
+	</script>
+</head>
+<body>
+		<div id='programBackground' class='container col-lg-8 col-sm-7 col-xs-12' style='height: 100vh'>
+		</div>
+		<div id='program' class='container col-lg-4 col-lg-offset-2 col-sm-5 col-sm-offset-1' style='margin-top: 30vh; opacity: none;'>
+				<div class='row'>
+					<form>
+						<label>Sentence to Cipher</label><br>
+						<input type='text' name='input' id='input' placeholder='Enter text' class='form-control'>
+						<small id='sentenceHelp' class='form-text text-muted' style='color: black'>Please use capitals (e.g. SPINACH EH!?)</small></br></br>
+						<button type='button' id='toCipher' name='toCipherBtn' onclick='bindCipher();' class='btn btn-primary'>Cipher</button>
+					</form>
+				</div>
+				<div class='row'>
+					<label style='margin-top: 10px'>Output:</label></br>
+							<p id='output' name='output' class='well col-sm-10 col-sm-offset-1' style='height: 10vh'></p>
+				</div>
+			</div>
+	<div id='description' class='col-lg-4 col-sm-5 col-xs-12 latoFont text-justify' style='float: right; height: 120vh;'>
+		<h1 class='text-center' style='margin-top: 10vh'>Caesar Cipher</h1>
+		<p style='margin-top: 50px;'>	
+			A Caesar Cipher, also known as a shift cipher or ROT13, is a letter substitution cipher that replaces a
+			letter with another letter that is thirteen positions away of it's actual position. For example, 'A' rotates in 'N'
+			and 'Y' translating into 'L' and so on and so on. The whole function of the cipher is able to encrypt and decrypt it's input
+			using the same algorithm; ROT13 being it's own inverse because the algorithm rotates thirteen positions in a twenty-six letter
+			alphabet. It's a method of encryption but not a very practical or very secure one.
+			</br></br>
+			Generally used to hide things like spoilers, quiz answers, offensive material from a brief glance.
+		</p>
+		<img src='rot13.png' alt='rot13' class='center-block' style='margin-top: 20vh;'>
+		
+		<div class='navbar-absolute-bottom text-right' style='margin-top: 15vh; font-size: 75%;'>
+			<label>Images may be found at Wikipedia:</label>
+			<ul style='list-style-type: none'>
+				<li><a href='https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar' target='_blank'>Caesar Background</a></li>
+				<li><a href='https://en.wikipedia.org/wiki/ROT13' target='_blank'>Rot13 Image</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
