@@ -1,0 +1,33 @@
+.menuContainer{
+	margin-top: 10vh;
+	height: 80vh;
+}
+.menuElements{
+	height: 100%;
+}
+.myJumbotron{
+margin-top: 100px;
+height: 90vh;
+}
+.myIcons{
+	width: 50%;
+	height: auto;
+	margin-top: 70%;
+}
+.myIcons2{
+	width: 5%;
+	height: auto;
+}
+
+.fontContent{
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	color: white;
+}
+
+.content1Height{
+	height: 100%;
+}
+.topMarginButton{
+	margin-top: 5px;
+};
